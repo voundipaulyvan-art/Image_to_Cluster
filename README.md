@@ -55,4 +55,4 @@ make all
 ---
 
 ## Auteur
-Paul Yvan VOUNDI ABESSOLO - EPSI Lyon M1 EISI 2026
+Paul Yvan VOUNDI ABESSOLO - EPSI Paris M1 EISI 2026
