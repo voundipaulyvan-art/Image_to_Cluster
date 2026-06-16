@@ -1,0 +1,20 @@
+---
+- name: Deploy Nginx sur K3d
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Créer le déploiement Nginx
+      shell: |
+        kubectl create deployment mon-nginx --image=mon-nginx-custom:1.0 --dry-run=client -o yaml | kubectl apply -f -
+
+    - name: Exposer le service
+      shell: |
+        kubectl expose deployment mon-nginx --type=NodePort --port=80 --dry-run=client -o yaml | kubectl apply -f -
+
+    - name: Vérifier le déploiement
+      command: kubectl get pods
+      register: pods
+
+    - name: Afficher les pods
+      debug:
+        msg: "{{ pods.stdout }}"
